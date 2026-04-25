@@ -1,4 +1,4 @@
-﻿namespace Malfunction.Result
+﻿namespace MalFunction.Result
 {
     public interface IResult<TPass, TFail>
     {
@@ -10,7 +10,6 @@
         public sealed record Fail(TFail Value) : IResult<TPass, TFail>
         {
             public static implicit operator TFail(Fail fail) => fail.Value;
-
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-namespace Malfunction.Result
+namespace MalFunction.Result
 {
     public static class IResultExtentions
     {
@@ -14,9 +14,9 @@ namespace Malfunction.Result
         };
 
         /// <summary>
-        /// Projects result's pass value into a new form
+        /// Projects result's pass value into a new result
         /// </summary>
-        public static IResult<TResult, TFail> Map<TPass, TFail, TResult>(this IResult<TPass, TFail> result, Func<TPass, IResult<TResult, TFail>> func) => result switch
+        public static IResult<TResult, TFail> Bind<TPass, TFail, TResult>(this IResult<TPass, TFail> result, Func<TPass, IResult<TResult, TFail>> func) => result switch
         {
             IResult<TPass, TFail>.Pass pass => func(pass.Value),
             IResult<TPass, TFail>.Fail fail => new IResult<TResult, TFail>.Fail(fail.Value),
@@ -34,9 +34,9 @@ namespace Malfunction.Result
         };
 
         /// <summary>
-        /// Projects result's fail value into a new form
+        /// Projects result's fail value into a new result
         /// </summary>
-        public static IResult<TPass, TResult> MapFail<TPass, TFail, TResult>(this IResult<TPass, TFail> result, Func<TFail, IResult<TPass, TResult>> func) => result switch
+        public static IResult<TPass, TResult> BindFail<TPass, TFail, TResult>(this IResult<TPass, TFail> result, Func<TFail, IResult<TPass, TResult>> func) => result switch
         {
             IResult<TPass, TFail>.Pass pass => new IResult<TPass, TResult>.Pass(pass.Value),
             IResult<TPass, TFail>.Fail fail => func(fail.Value),
