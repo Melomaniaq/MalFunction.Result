@@ -1,5 +1,7 @@
 # Malfunction.Result
 
+Functional result type for C#
+
 # Getting Started
 The result type is an interface that contains two records, Pass and Fail
 ```cs
