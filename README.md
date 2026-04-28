@@ -1,4 +1,4 @@
-# Malfunction.Result
+# MalFunction.Result
 [![NuGet Version](https://img.shields.io/nuget/v/Malfunction.Result?style=flat)](https://www.nuget.org/packages/MalFunction.Result)
 
 Functional result type for C#
